@@ -1,0 +1,20 @@
+// utils文件夹存放的是项目所需的功能模块.例如正则等
+import {v4  as  uuidv4} from "uuid" 
+export const  getUUID = ()=>{
+// 要生成随机字符串,且每次执行不能发生变化,游客身份持久存储
+// 先从本地存储获取uuid(看一下本地存储是否有)
+let uuid_token = localStorage.getItem("UUIDTOKEN")
+// 如果没有,则生成
+if(!uuid_token){
+    // 生成游客临时身份
+    uuid_token = uuidv4();
+    localStorage.setItem("UUIDTOKEN",uuid_token)
+}
+// 切记有返回值,没有返回值则返回值为undefined
+return uuid_token;
+}
+
+
+
+
+
